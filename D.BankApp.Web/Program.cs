@@ -13,7 +13,7 @@ builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<BankContext>(options => options.UseNpgsql(Configurations.ConnectionString));
 
 
-builder.Services.AddScoped<IUow, Uow>();
+builder.Services.AddScoped<IUow2, Uow2>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(ConcreteRepository<>));
 //builder.Services.AddScoped<IApplicationUserRepository, ApplicationUserRepository>();
 //builder.Services.AddScoped<IAccountRepository, AccountRepository>();

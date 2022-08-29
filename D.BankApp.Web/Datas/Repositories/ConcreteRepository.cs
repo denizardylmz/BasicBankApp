@@ -1,5 +1,6 @@
 using D.BankApp.Web.Datas.Context;
 using D.BankApp.Web.Datas.Entities.Common;
+using D.BankApp.Web.Datas.UnitOfWorks;
 using D.BankApp.Web.Repositories.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -35,11 +36,12 @@ public class ConcreteRepository<T> : IRepository<T> where T : BaseEntity
 
         return entity.State == EntityState.Added;
     }
-
+    
     public async Task<bool> Delete(string id)
     {
         EntityEntry<T> entry = Table.Remove(await GetByIdAsync(id));
         return entry.State == EntityState.Deleted;
     }
+
 
 }
