@@ -1,0 +1,47 @@
+﻿@model List<UserListModel>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+
+<table class="table table-striped table-bordered">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Surname</th>
+        <th scope="col">Acounts</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+    </tr>
+    </thead>
+    
+    <tbody class="table-group-divider">
+    @foreach (var items in Model)
+    {
+        <tr>
+            <th scope="row"></th>
+            <td>@items.Name</td>
+            <td >@items.Surname</td>
+            <td width="20px"> <getAccountCount user-id="items.Id"></getAccountCount></td>
+            <td>
+                <a asp-action="Create" asp-controller="Account" asp-route-id="@items.Id">Create Account</a>
+            </td>
+            <td>
+                <a asp-action="Index" asp-controller="User" asp-route-id = "@items.Id">Account Details</a>
+            </td>
+        </tr>   
+    }
+    
+    </tbody>
+        
+</table>
+
+<div align="right">
+    <button class="rounded-pill" style="background: #c5e8ef">
+        <a asp-action="CreateUser" asp-controller="User">
+            <img src="~/Assets/CreateAccount48.png" width="25" height="25"/>
+        </a>
+    </button>
+</div>

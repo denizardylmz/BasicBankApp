@@ -1,0 +1,51 @@
+@model UserDetailModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row">
+    <div class="col-6">
+        <h3>Hesap eklenecek kişinin bilgileri</h3>
+        <p>
+            İsim : @Model.Name
+        </p>
+        <p>
+            Soyisim: @Model.Surname
+        </p>
+        <p>
+            Hesap miktarı: <getAccountCount user-id="@Model.Id" ></getAccountCount>
+        </p>
+    </div>
+    
+    <div class="col-6">
+        <table class="table table-striped table-bordered">
+            <thead>
+            <tr>
+                <th class="col-4">Account Number</th>
+                <th class="col-4">Balance</th>
+                <th class="col-2"></th>
+                <th class="col-2"></th>
+            </tr>
+            </thead>
+            <tbody class="table-group-divider">
+            
+                @foreach (var item in Model.Accounts)
+                {<tr>
+                     <td>@item.AccountNumber</td>
+                     <td>@item.Balance</td>
+                     <td>
+                         <a asp-action="Delete" asp-route-id="@item.Id">
+                             <img src="~/Assets/Delete.png" width="20px" height="20px"/>
+                         </a>
+                         <a asp-action="SendMoney" asp-controller="Account" asp-route-id="@item.Id">
+                             <img src="~/Assets/Delete.png" width="20px" height="20px"/>
+                         </a>
+                         
+                     </td>
+                 </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+

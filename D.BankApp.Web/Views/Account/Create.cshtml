@@ -1,0 +1,37 @@
+@model UserListModel;
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row">
+    <div class="col-6">
+        <h3>Hesap eklenecek kişinin bilgidleri</h3>
+        <p>
+            İsim: @Model.Name
+        </p>
+        <p>
+            Soyisim: @Model.Surname
+        </p>
+        <p>
+            Hesap sayısı: <getAccountCount user-id="@Model.Id" ></getAccountCount>
+        </p>
+    </div>
+    
+    <div class="col-6">
+        <form asp-controller="Account" asp-action="Create" method="post">
+            <input type="hidden" name="ApplicationUserId" value="@Model.Id"/>
+            <div class="mb-3">
+                <label for="Balance" class="form-label">Balance</label>
+                <input type="number" class="form-control" id="Balance" placeholder="Tl" name="Balance">
+            </div>
+            <div class="mb-3">
+                <label for="accountNumber" class="form-label">Account Number</label>
+                <input type="number" class="form-control" id="accountNumber" name="AccountNumber">
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary">Create Account</button>
+            </div>
+        </form>
+    </div>
+</div>
+

@@ -1,0 +1,25 @@
+@model UserCreateModel
+@{
+    ViewData["Title"] = "SendMoney";
+}
+
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-10">
+    <form class="row-md-8" method="post">
+      <div class="mb-3 row">
+        <label for="Name" class="col-sm-2 col-form-label">Name</label>
+        <div class="col-md-6">
+          <input type="text" class="form-control" id="Name" name="Name">
+        </div>
+      </div>
+      <div class="mb-3 row">
+        <label for="Surname" class="col-sm-2 col-form-label">Surname</label>
+        <div class="col-md-6">
+          <input type="text" class="form-control" id="Surname" name="Surname">
+        </div>
+      </div>
+      <button style="width: 100px; left: 500px" class="rounded-pill btn btn-light" type="submit" asp-action="CreateUser">Create</button>
+    </form>
+  </div>
+</div>
